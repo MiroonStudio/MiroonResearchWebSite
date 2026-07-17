@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://miroonresearch.cn/sitemap-index.xml
+Sitemap: https://www.miroonresearch.cn/sitemap-index.xml
