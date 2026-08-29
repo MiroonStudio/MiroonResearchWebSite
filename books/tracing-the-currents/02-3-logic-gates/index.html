@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#050505"><meta name="color-scheme" content="dark"><meta name="description" content="从真值表开始，认识 NOT、AND、OR 与 XOR 这些构成数字电路的基础逻辑门。"><meta name="robots" content="index, follow"><title>门外汉 | 溯时观澜 · Miroon Research</title><link rel="canonical" href="https://www.miroonresearch.cn/books/tracing-the-currents/02-3-logic-gates/"><link rel="alternate" hreflang="zh-CN" href="https://www.miroonresearch.cn/books/tracing-the-currents/02-3-logic-gates/"><link rel="alternate" hreflang="x-default" href="https://www.miroonresearch.cn/books/tracing-the-currents/02-3-logic-gates/"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:site_name" content="Miroon Research"><meta property="og:title" content="门外汉 | 溯时观澜 · Miroon Research"><meta property="og:description" content="从真值表开始，认识 NOT、AND、OR 与 XOR 这些构成数字电路的基础逻辑门。"><meta property="og:url" content="https://www.miroonresearch.cn/books/tracing-the-currents/02-3-logic-gates/"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://www.miroonresearch.cn/assets/tracing-the-currents-cover.png?v=20260827-2"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://www.miroonresearch.cn/assets/tracing-the-currents-cover.png?v=20260827-2"><link rel="stylesheet" href="/_astro/BaseLayout.BNrvp-3t.css"></head><body data-cover-state="natural" data-page-kind="book" data-locale="zh"><main class="book-scene" id="reading-start"><header class="reading-header"><div class="reading-header__inner"><a class="reading-brand" href="/"><img src="/assets/miroon-research-logo-192.png" srcset="/assets/miroon-research-logo-64.png 64w, /assets/miroon-research-logo-192.png 192w, /assets/miroon-research-logo-352.png 352w" sizes="(max-width: 680px) 30px, 32px" alt width="32" height="32" decoding="async"><span><strong>Miroon Research</strong><small>镜月研究部</small></span></a><a class="reading-return" href="/books/tracing-the-currents/">← 溯时观澜</a><nav class="reading-nav" aria-label="正文导航"><span class="persistent-status"><i></i>持续写作中 · WORK IN PROGRESS</span><a href="/download/">下载</a><a href="https://www.miroonstudio.cn/" rel="external">Studio ↗</a></nav></div><div class="mobile-status persistent-status"><i></i>持续写作中 · WORK IN PROGRESS</div></header><div class="book-frame"><aside class="book-sidebar" aria-label="《溯时观澜》章节目录"><a class="book-sidebar__identity" href="/books/tracing-the-currents/"><span>BOOK / 01</span><strong>溯时观澜</strong><small>Tracing the Currents</small></a><button class="book-sidebar__toggle" type="button" aria-controls="book-directory" aria-expanded="false" data-book-directory-toggle><span>CONTENTS / 目录</span><strong><em>02.3</em>门外汉</strong><i aria-hidden="true">＋</i></button><nav class="book-sidebar__chapters" id="book-directory" aria-label="章节分组"><section class="book-sidebar__group"><header><span>00</span><div><strong>开篇</strong><small>Lead</small></div></header><div class="book-sidebar__entries"><a href="/books/tracing-the-currents/"><span>00</span><div><small>序</small><strong>源头｜简序</strong></div></a></div></section><section class="book-sidebar__group"><header><span>01</span><div><strong>首先</strong><small>The Firstly Firstly</small></div></header><div class="book-sidebar__entries"><a href="/books/tracing-the-currents/01-about-cs/"><span>01</span><div><small>主流</small><strong>首先().首先(nullptr)：关于 CS</strong></div></a></div></section><section class="book-sidebar__group"><header><span>02</span><div><strong>沙子与智慧</strong><small>Sand With Wisdom</small></div></header><div class="book-sidebar__entries"><a href="/books/tracing-the-currents/02-sand-with-wisdom/"><span>02.1</span><div><small>主流</small><strong>沙子与智慧</strong></div></a><a href="/books/tracing-the-currents/02-2-zerone/"><span>02.2</span><div><small>主流</small><strong>二 - 择一</strong></div></a><a class="book-sidebar__entry--note" href="/books/tracing-the-currents/02-2-a-no-free-wishes/"><span>02.2-A</span><div><small>岸边札记</small><strong>工程不是许愿池</strong></div></a><a href="/books/tracing-the-currents/02-3-logic-gates/" aria-current="page"><span>02.3</span><div><small>主流</small><strong>门外汉</strong></div></a></div></section></nav><p class="book-sidebar__state"><i></i>当前为持续写作中的公开版本，章节结构与措辞仍可能调整。</p></aside><script type="module">document.querySelectorAll(`.book-sidebar`).forEach(e=>{let t=e.querySelector(`[data-book-directory-toggle]`);t&&(t.addEventListener(`click`,()=>{let n=e.dataset.directoryOpen===`true`;e.dataset.directoryOpen=String(!n),t.setAttribute(`aria-expanded`,String(!n))}),e.querySelectorAll(`.book-sidebar__entries a`).forEach(n=>{n.addEventListener(`click`,()=>{e.dataset.directoryOpen=`false`,t.setAttribute(`aria-expanded`,`false`)})}))});</script><article class="book-manuscript book-manuscript--chapter"><div class="book-chapter-meta"><span>MAIN CURRENT / 02.3</span><small>公开草稿 · 2026.08.29</small></div><header class="book-chapter-heading"><p>主流 02.3</p><h1>门外汉</h1><span>Logic Gates</span></header><div class="book-prose"><h1 id="主流-023门外汉--logic-gates">主流 02.3｜门外汉 · Logic Gates</h1>
+<h2 id="引-逻辑门">引-逻辑门</h2>
+<p>到这里，机器已经拥有了两种能够被可靠区分的状态。</p>
+<p>不过，一串静止的 <code>0</code> 与 <code>1</code> 还只能表示信息。要让计算真正发生，电路还必须按照一定的规则组合并改变这些状态。</p>
+<p>而这些规则在数字电路中最基础的物质实现，它们同时还有个相当形象的名字：</p>
+<p><strong>逻辑门。</strong></p>
+<h2 id="规则怪谈">规则怪谈</h2>
+<p>我觉得 <strong>“逻辑门”</strong> 这个词非常贴切——它确实执行着极为简单的逻辑，也确实像一扇门一样，根据输入决定另一侧应该出现什么状态。</p>
+<p>严格来说，逻辑门是一种按照固定规则，将一个或多个输入逻辑值映射为输出逻辑值的电路。</p>
+<p>当然，它并不理解所谓的 <strong>“规则”</strong>，也不知道门外站着什么。<br>
+它只负责在输入发生变化以后，坚定不移地给出规定好的输出。</p>
+<p><em>（在这一点上，它可能比大多数软件需求都更加稳定。）</em></p>
+<p>实际上，逻辑门的规则并不复杂，甚至简单到了可以被完整列出来：</p>
+<p>一个逻辑门的输入只有 <code>0</code> 与 <code>1</code> 两种状态。<br>
+因此，拥有 <code>n</code> 个输入的逻辑门，总共只会遇到 <code>2ⁿ</code> 种输入组合。<br>
+把所有组合以及它们对应的输出逐一写进表格，便得到了一张 <strong>真值表（truth table）</strong>。</p>
+<p>在布尔逻辑中，我们通常将 <code>1</code> 解释为 “真” ，将 <code>0</code> 解释为 “假” ，真值表也因此得名。<br>
+（某些编程语言里就可以直接用 <code>0</code> 与 <code>1</code> 作为 “真” 或者 “假”）</p>
+<p>当然，电子并不知道什么是真什么是假。<br>
+它们只是又一次被人类安排了意义。</p>
+<h2 id="康神开播了真的假的">康神开播了——真的假的？</h2>
+<p>在 CS 里，我们不妨把 <strong>“康神开播了”</strong> 看作一个命题，并将它记作 <code>P</code>。</p>
+<p>所谓命题，就是一句能够被判断为真或假的陈述。<br>
+康神开播了，<code>P = 1</code>；康神没开播，<code>P = 0</code>。</p>
+<p>至于康神到底有没有开播，应该去直播间确认——真值表不负责现场调查。<br>
+它只负责告诉我们：如果命题是真的，接下来会怎样；如果命题是假的，又会怎样。</p>
+<p><em>（开播了吗？如开，到底开没开，如开。）</em></p>
+<p><img  src="/_astro/LogicGates-Kang.BULdJd3F_7pPn5.webp" alt="直播画面，字幕为“康神开播了，真的假的”" loading="lazy" decoding="async" width="1357" height="712"></p>
+<p>如果 <code>P</code> 表示 “康神开播了”，那么 <code>NOT P</code> 表示的就是：</p>
+<p><strong>康神没有开播。</strong></p>
+<p><em>（字面意思了属于是）</em></p>
+<p>我们可以把 <code>P</code> 与 <code>NOT P</code> 的所有可能完整列出来：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center"><code>P</code></th>
+<th style="text-align: center"><code>NOT P</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center"><code>0</code></td>
+<td style="text-align: center"><code>1</code></td>
+</tr>
+<tr>
+<td style="text-align: center"><code>1</code></td>
+<td style="text-align: center"><code>0</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>NOT P</code> 有时也写作 <code>¬P</code>，二者都表示对命题 <code>P</code> 取反。</p>
+<p>在计算机科学的命题逻辑中，<code>P</code> 代表一句陈述。<br>
+到了数字电路中，它也可以代表一根输入线上的逻辑状态。</p>
+<p>当这条规则被真正实现为电路时，我们便得到了一扇最简单的逻辑门：</p>
+<p><strong>非门（NOT gate）</strong>，也称为 <strong>反相器（inverter）</strong>。</p>
+<p><em>（像是一个杠精，无论如何都要和你持反意见）</em></p>
+<h2 id="全票通过">全票通过</h2>
+<p>非门只有一个输入，因此它只需要负责反对一个人。</p>
+<p>不过现实中的大多数问题往往不止一个条件。<br>
+假设现在有两个输入 <code>P</code> 与 <code>Q</code>，每个输入都可能是 <code>0</code> 或 <code>1</code>，<br>
+那么一共会出现 <code>2² = 4</code> 种组合。</p>
+<p><strong>与门（AND gate）</strong> 的规则相当严格：<br>
+只有所有输入都为 <code>1</code> 时，它才会输出 <code>1</code>。只要其中一个输入为 <code>0</code>，结果就是 <code>0</code>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center"><code>P</code></th>
+<th style="text-align: center"><code>Q</code></th>
+<th style="text-align: center"><code>P AND Q</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center"><code>0</code></td>
+<td style="text-align: center"><code>0</code></td>
+<td style="text-align: center"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: center"><code>0</code></td>
+<td style="text-align: center"><code>1</code></td>
+<td style="text-align: center"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: center"><code>1</code></td>
+<td style="text-align: center"><code>0</code></td>
+<td style="text-align: center"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: center"><code>1</code></td>
+<td style="text-align: center"><code>1</code></td>
+<td style="text-align: center"><code>1</code></td>
+</tr>
+</tbody>
+</table>
+<p>如果 <code>P</code> 表示“密码正确”，<code>Q</code> 表示“验证码正确”，那么 <code>P AND Q</code> 表示的就是：</p>
+<p><strong>密码与验证码全部正确。</strong></p>
+<p>少一个都不行。</p>
+<p><em>（与门大概是那种喜欢连坐的老师，只要有一个人当搅屎棍就直接选择给全班人创死）</em></p>
+<h2 id="我觉得或许还行">我觉得或许还行？</h2>
+<p><strong>或门（OR gate）</strong> 就显得比较随和了。<br>
+它对输入的要求相当宽松：只要两个输入中至少有一个为 <code>1</code>，它就会输出 <code>1</code>。<br>
+只有当两个输入都为 <code>0</code> 时，它才会输出 <code>0</code>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center"><code>P</code></th>
+<th style="text-align: center"><code>Q</code></th>
+<th style="text-align: center"><code>P OR Q</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center"><code>0</code></td>
+<td style="text-align: center"><code>0</code></td>
+<td style="text-align: center"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: center"><code>0</code></td>
+<td style="text-align: center"><code>1</code></td>
+<td style="text-align: center"><code>1</code></td>
+</tr>
+<tr>
+<td style="text-align: center"><code>1</code></td>
+<td style="text-align: center"><code>0</code></td>
+<td style="text-align: center"><code>1</code></td>
+</tr>
+<tr>
+<td style="text-align: center"><code>1</code></td>
+<td style="text-align: center"><code>1</code></td>
+<td style="text-align: center"><code>1</code></td>
+</tr>
+</tbody>
+</table>
+<p><em>（或许它自己就觉得 <code>1</code> 是个不错的选择，只需要有一个人支持它的观点罢了。）</em></p>
+<p>值得注意的是，或门并不要求两个输入“二选一”。</p>
+<p>当 <code>P</code> 与 <code>Q</code> 同时为 <code>1</code> 时，<code>P OR Q</code> 仍然是 <code>1</code>。<br>
+这种“至少一个成立，也允许全部成立”的关系，称为 <strong>包含或（inclusive OR）</strong>。</p>
+<p>但如果规则要求两个输入中只能有一个为 <code>1</code> 呢？</p>
+<p>那就需要一扇稍微难伺候一点的门了。</p>
+<h2 id="王不见王">王不见王</h2>
+<p>普通的或门只要求 “至少有一个”，至于到底来了一个还是两个，它并不在乎。</p>
+<p>但 <strong>异或门（XOR gate，exclusive OR）</strong> 的要求更加严格：两个输入中必须恰好有一个为 <code>1</code>，它才会输出 <code>1</code>。</p>
+<p>或者说点更人话的：</p>
+<blockquote>
+<p><strong>两个输入不同时，异或门输出 <code>1</code>；两个输入相同时，异或门输出 <code>0</code>。</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align: center"><code>P</code></th>
+<th style="text-align: center"><code>Q</code></th>
+<th style="text-align: center"><code>P XOR Q</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center"><code>0</code></td>
+<td style="text-align: center"><code>0</code></td>
+<td style="text-align: center"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: center"><code>0</code></td>
+<td style="text-align: center"><code>1</code></td>
+<td style="text-align: center"><code>1</code></td>
+</tr>
+<tr>
+<td style="text-align: center"><code>1</code></td>
+<td style="text-align: center"><code>0</code></td>
+<td style="text-align: center"><code>1</code></td>
+</tr>
+<tr>
+<td style="text-align: center"><code>1</code></td>
+<td style="text-align: center"><code>1</code></td>
+<td style="text-align: center"><code>0</code></td>
+</tr>
+</tbody>
+</table>
+<p>异或运算也经常写作 <code>P ⊕ Q</code>。<br>
+<em>（尽管电脑上不是很好直接打出这个字符就是了）</em></p>
+<p>不过在许多编程语言中，按位异或则使用更加方便输入的 <code>^</code>，例如 <code>P ^ Q</code>。<br>
+<em>（人类最终还是向键盘作出了妥协。）</em></p>
+<p>如果把 <code>1</code> 看作一位独占欲极强的“王”，那么异或门的规矩便相当直白：<br>
+来一个，可以；一个都不来，不行；两个同时来，更不行。</p>
+<p><em>（没有王不行，有两个王也不行，算是仇家来的。）</em></p>
+</div><nav class="book-chapter-pager" aria-label="章节切换"><a href="/books/tracing-the-currents/02-2-zerone/" rel="prev"><span>← PREVIOUS</span><strong>02.2 · 二 - 择一</strong></a></nav></article></div></main></body></html>
